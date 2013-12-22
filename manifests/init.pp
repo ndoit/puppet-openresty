@@ -87,7 +87,7 @@ class openresty {
   }
   ->
   # ENVIRONMENTAL SETTINGS
-  exec {"bash -c 'echo \"export PATH=\\\$PATH:${openresty_home}/bin\" >> /home/${user}/.bashrc'":
+  exec {"bash -c 'echo \"export PATH=\\\$PATH:${openresty_home}/nginx/bin\" >> /home/${user}/.bashrc'":
 	user => 	$user
   }
   
