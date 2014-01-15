@@ -1,8 +1,8 @@
 # installs the lua-enabled nginx variant "openresty"
 # requires a $user to be set by the caller for editing the path in bashrc
-class openresty {
+class openresty( $openresty_home = "/usr/local/openresty" ){
 
-  # user must be set (for setting up path)G
+  # user must be set (for setting up path)
   if $user == undef { fail("'user' not defined") }
 
   # openresty environment variables
