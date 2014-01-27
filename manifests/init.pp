@@ -53,6 +53,13 @@ class openresty( $openresty_home = "/usr/local/openresty" ){
 	owner =>	$user
   }
   ->	
+  file {"openresty ssl dir":
+	ensure =>	directory,
+  	path => 	"${openresty_src}/ssl",
+	mode =>		"0755",
+	owner =>	$user
+  }
+  ->	 
   exec { 'download package':
         command => "wget ${openresty_package_url} -O ${openresty_src}/${openresty_filename}${targz_suffix}",
         creates => "${openresty_src}/${openresty_filename}${targz_suffix}"
@@ -85,6 +92,20 @@ class openresty( $openresty_home = "/usr/local/openresty" ){
 	cwd =>		"${openresty_src}/${openresty_filename}"
   }
   ->
+  file {"openresty sites-available dir":
+	ensure =>	directory,
+  	path => 	"${openresty_home}/conf/sites-available",
+	mode =>		"0755",
+	owner =>	$user
+  }
+  ->	
+  file {"openresty sites-enabled dir":
+	ensure =>	directory,
+  	path => 	"${openresty_home}/conf/sites-enabled",
+	mode =>		"0755",
+	owner =>	$user
+  }
+  ->	
   # ENVIRONMENTAL SETTINGS
   exec {"bash -c 'echo \"export PATH=\\\$PATH:${openresty_home}/nginx/sbin\" >> /home/${user}/.bashrc'":
 	user => 	$user
