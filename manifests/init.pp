@@ -87,7 +87,7 @@ class openresty( $openresty_home = "/usr/local/openresty" ){
   ->
   file {"openresty ssl dir":
 	ensure =>	directory,
-  	path => 	"${openresty_src}/nginx/ssl",
+  	path => 	"${openresty_home}/nginx/ssl",
 	mode =>		"0755",
 	owner =>	$user
   }
