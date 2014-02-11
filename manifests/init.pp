@@ -43,6 +43,7 @@ class openresty( $openresty_home = "/usr/local/openresty" ){
 	ensure =>	directory,
   	path => 	"${openresty_home}",
 	mode =>		"0775",
+	recurse =>	true,
 	owner =>	$user
   }
   ->	
