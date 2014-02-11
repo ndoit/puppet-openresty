@@ -42,7 +42,7 @@ class openresty( $openresty_home = "/usr/local/openresty" ){
   file {"openresty install dir":
 	ensure =>	directory,
   	path => 	"${openresty_home}",
-	mode =>		"0755",
+	mode =>		"0775",
 	owner =>	$user
   }
   ->	
@@ -102,13 +102,6 @@ class openresty( $openresty_home = "/usr/local/openresty" ){
   file {"openresty sites-enabled dir":
 	ensure =>	directory,
   	path => 	"${openresty_home}/nginx/conf/sites-enabled",
-	mode =>		"0775",
-	owner =>	$user
-  }
-  ->
-  file {"openresty home":
-	ensure =>	directory,
-  	path => 	$openresty_home,
 	mode =>		"0775",
 	owner =>	$user
   }
