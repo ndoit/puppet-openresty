@@ -88,24 +88,31 @@ class openresty( $openresty_home = "/usr/local/openresty" ){
   file {"openresty ssl dir":
 	ensure =>	directory,
   	path => 	"${openresty_home}/nginx/ssl",
-	mode =>		"0755",
+	mode =>		"0775",
 	owner =>	$user
   }
   ->  
   file {"openresty sites-available dir":
 	ensure =>	directory,
   	path => 	"${openresty_home}/nginx/conf/sites-available",
-	mode =>		"0755",
+	mode =>		"0775",
 	owner =>	$user
   }
   ->	
   file {"openresty sites-enabled dir":
 	ensure =>	directory,
   	path => 	"${openresty_home}/nginx/conf/sites-enabled",
-	mode =>		"0755",
+	mode =>		"0775",
 	owner =>	$user
   }
-  ->	
+  ->
+  file {"openresty home":
+	ensure =>	directory,
+  	path => 	$openresty_home,
+	mode =>		"0775",
+	owner =>	$user
+  }
+  ->
   # ENVIRONMENTAL SETTINGS
   exec {"bash -c 'echo \"export PATH=\\\$PATH:${openresty_home}/nginx/sbin\" >> /home/${user}/.bashrc'":
 	user => 	$user
