@@ -93,6 +93,14 @@ class openresty( $openresty_home = "/usr/local/openresty" ){
 	owner =>	$user
   }
   ->  
+  file {"openresty conf dir":
+	ensure =>	directory,
+  	path => 	"${openresty_home}/nginx",
+  	recurse =>	true,
+	mode =>		"0775",
+	owner =>	$user
+  }  
+  ->  
   file {"openresty sites-available dir":
 	ensure =>	directory,
   	path => 	"${openresty_home}/nginx/conf/sites-available",
