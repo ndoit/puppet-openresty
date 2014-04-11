@@ -6,7 +6,7 @@ class openresty( $openresty_home = "/usr/local/openresty" ){
   if $user == undef { fail("'user' not defined") }
 
   # openresty environment variables
-  $openresty_package_url = "https://s3.amazonaws.com/OpenRestyPackage/ngx_openresty-1.2.8.6.tar.tar.tar.gz"
+  $openresty_package_url = "https://s3.amazonaws.com/OpenRestyPackage/ngx_openresty-1.2.8.6.tar.gz"
   
   $openresty_src = "${openresty_home}/src"
   $openresty_filename = "ngx_openresty-1.2.8.6"
